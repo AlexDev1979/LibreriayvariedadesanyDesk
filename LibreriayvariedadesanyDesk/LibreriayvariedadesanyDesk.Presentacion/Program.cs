@@ -19,7 +19,7 @@ namespace LibreriayvariedadesanyDesk.Presentacion
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             var host = CreateHostBuilder().Build();
-            var formService = host.Services.GetRequiredService<frmUsuario>();
+            var formService = host.Services.GetRequiredService<frmVenta>();
             Application.Run(formService);
         }
 
@@ -36,7 +36,14 @@ namespace LibreriayvariedadesanyDesk.Presentacion
                services.RegisterRepositoryDependendies();
                services.RegisterServicesDependendies();
                services.AddTransient<frmUsuario>();
-
+               services.AddTransient<frmProveedor>();
+               services.AddTransient<frmProducto>();
+               services.AddTransient<frmNegocio>();
+               services.AddTransient<frmCliente>();
+               services.AddTransient<frmCategoria>();
+               services.AddTransient<frmBuscarProducto>();
+               services.AddTransient<frmBuscarMedioPago>();
+               services.AddTransient<frmVenta>();
            });
 
     }
