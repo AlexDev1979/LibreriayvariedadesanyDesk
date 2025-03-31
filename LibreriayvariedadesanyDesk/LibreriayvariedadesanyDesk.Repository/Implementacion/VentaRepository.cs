@@ -175,5 +175,81 @@ namespace LibreriayvariedadesanyDeskRepository.Implementacion
 
             return lista;
         }
+
+        public async Task<List<Venta>> lista(string fechaInicio, string fechaFinal, string buscar = "")
+        {
+            List<Venta> lista = new List<Venta>();
+
+            using (var con = _conexion.ObtenerSQLConnection())
+            {
+                con.Open();
+                var cmd = new SqlCommand("sp_listaVenta", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@fechaFinal", fechaFinal);
+                cmd.Parameters.AddWithValue("@Buscar", buscar);
+                using (var dr = await cmd.ExecuteReaderAsync())
+                {
+                    while (await dr.ReadAsync())
+                    {
+                        lista.Add(new Venta
+                        {
+                            numeroVenta = dr["numeroVenta"].ToString()!,
+                            UsuarioRegistro = new Usuario
+                            { 
+                                nombreUsuario = dr["nombreUsuario"].ToString()!
+                            },
+                            nombreCliente = dr["nombreCliente"].ToString()!,
+                            precioTotal = Convert.ToDecimal(dr["PrecioTotal"]),
+                            PagoCon = Convert.ToDecimal(dr["pagoCon"]),
+                            cambio = Convert.ToDecimal(dr["cambio"]),
+                            fechaRegistro = dr["fechaRegistro"].ToString()!
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
+
+        public async Task<List<DetalleVenta>> Reporte(string fechaInicio, string fechaFinal)
+        {
+            List<DetalleVenta> lista = new List<DetalleVenta>();
+
+            using (var con = _conexion.ObtenerSQLConnection())
+            {
+                con.Open();
+                var cmd = new SqlCommand("sp_reporteVenta", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@fechaInicio", fechaInicio);
+                cmd.Parameters.AddWithValue("@fechaFinal", fechaFinal);
+                using (var dr = await cmd.ExecuteReaderAsync())
+                {
+                    while (await dr.ReadAsync())
+                    {
+                        lista.Add(new DetalleVenta
+                        {
+                            refVenta = new Venta
+                            {
+                                numeroVenta =dr["numeroVenta"].ToString()!,
+                                UsuarioRegistro = new Usuario
+                                {
+                                    nombreUsuario = dr["nombreUsuario"].ToString()!
+                                },
+                                fechaRegistro = dr["fechaRegistro"].ToString()!
+                            },
+                            refProducto = new Producto
+                            { 
+                                descripcion = dr["producto"].ToString()!,
+                                precioCosto = Convert.ToDecimal(dr["precioCosto"]),
+                            },
+                            precioVenta = Convert.ToDecimal(dr["precioVenta"]),
+                            cantidad = Convert.ToInt32(dr["cantidad"]),
+                            precioTotal = Convert.ToDecimal(dr["PrecioTotal"]),                            
+                        });
+                    }
+                }
+            }
+            return lista;
+        }
     }
 }

@@ -27,5 +27,15 @@ namespace LibreriayvariedadesanyDeskServices.Implementacion
         {
             return await _ventaRepository.ObtenerDetalle(numeroventa);
         }
+
+        public async Task<List<Venta>> lista(string fechaInicio, string fechaFinal, string buscar = "")
+        {
+            return await _ventaRepository.lista(fechaInicio, fechaFinal, buscar);
+        }
+
+        public async Task<List<DetalleVenta>> Reporte(string fechaInicio, string fechaFinal)
+        {
+            return await _ventaRepository.Reporte(fechaInicio, fechaFinal);
+        }
     }
 }

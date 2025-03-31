@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBuscarMedioPago));
             GridDatosMPago = new DataGridView();
             btBuscarMP = new Button();
             tbBuscar = new TextBox();
@@ -54,16 +55,19 @@
             // 
             // btBuscarMP
             // 
-            btBuscarMP.BackColor = Color.FromArgb(29, 114, 198);
+            btBuscarMP.BackColor = Color.White;
             btBuscarMP.Cursor = Cursors.Hand;
             btBuscarMP.FlatAppearance.BorderColor = Color.Black;
             btBuscarMP.FlatStyle = FlatStyle.Flat;
             btBuscarMP.Font = new Font("Poppins", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            btBuscarMP.Location = new Point(649, 32);
+            btBuscarMP.ForeColor = Color.Black;
+            btBuscarMP.Image = (Image)resources.GetObject("btBuscarMP.Image");
+            btBuscarMP.Location = new Point(649, 30);
             btBuscarMP.Name = "btBuscarMP";
             btBuscarMP.Size = new Size(91, 32);
             btBuscarMP.TabIndex = 11;
             btBuscarMP.Text = "Buscar";
+            btBuscarMP.TextImageRelation = TextImageRelation.ImageBeforeText;
             btBuscarMP.UseVisualStyleBackColor = false;
             btBuscarMP.Click += btBuscarMP_Click;
             // 

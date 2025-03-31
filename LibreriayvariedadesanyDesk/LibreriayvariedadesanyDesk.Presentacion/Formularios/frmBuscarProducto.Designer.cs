@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             GridDatosProducto = new DataGridView();
             btBuscar = new Button();
             tbBuscar = new TextBox();
@@ -37,14 +37,14 @@
             // 
             // GridDatosProducto
             // 
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = SystemColors.Control;
-            dataGridViewCellStyle1.Font = new Font("Poppins", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            GridDatosProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Poppins", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            GridDatosProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             GridDatosProducto.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GridDatosProducto.Location = new Point(12, 77);
             GridDatosProducto.Name = "GridDatosProducto";
@@ -59,6 +59,7 @@
             btBuscar.FlatAppearance.BorderColor = Color.Black;
             btBuscar.FlatStyle = FlatStyle.Flat;
             btBuscar.Font = new Font("Poppins", 9F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            btBuscar.ForeColor = Color.White;
             btBuscar.Location = new Point(640, 27);
             btBuscar.Name = "btBuscar";
             btBuscar.Size = new Size(91, 32);
